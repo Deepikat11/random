@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather and Time Information | Smart Travel Companion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://www.shutterstock.com/image-illustration/textured-on-wet-white-paper-260nw-2480257871.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        .container {
+            width: 80%;
+            max-width: 500px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .info {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .info h2 {
+            color: #2980b9;
+        }
+        .info p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .advice, .precautions {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .advice {
+            background-color: #f7e593;
+            color: #333;
+        }
+        .precautions {
+            background-color: #f69c80;
+            color: #fff;
+        }
+        .loading {
+            font-size: 20px;
+            color: #ff7043;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Smart Travel Companion</h1>
+        <div class="info" id="weatherInfo">
+            <h2>Your Current Location</h2>
+            <p class="loading">Fetching weather and time for Bengaluru...</p>
+        </div>
+    </div>
+
+    <script>
+        const apiKey = '78aa66c20fc7401e0119de406ec59adb';
+        const lat = 12.9716;
+        const lon = 77.5946;
+
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const weather = data.weather[0].description;
+                const temperature = data.main.temp;
+                const city = data.name;
+                const timeZone = data.timezone;
+
+                const date = new Date(new Date().getTime() + timeZone * 1000);
+                const hours = date.getHours();
+                const minutes = date.getMinutes();
+                const formattedTime = `${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+
+                let advice = '';
+                let precautions = '';
+                
+                if (temperature > 35) {
+                    advice = 'It\'s extremely hot! Stay indoors during peak hours and drink plenty of water.';
+                    precautions = 'Wear sunscreen, carry a hat, and avoid direct sunlight.';
+                } else if (temperature > 30) {
+                    advice = 'It\'s quite hot! Stay hydrated and wear light clothes.';
+                    precautions = 'Limit physical exertion, drink water regularly, and avoid heavy meals.';
+                } else if (temperature < 20) {
+                    advice = 'It\'s chilly outside! A warm jacket is recommended.';
+                    precautions = 'Layer up, especially if you are heading out in the evening.';
+                } else {
+                    advice = 'Weather is mild, perfect for outdoor activities!';
+                    precautions = 'Carry a light jacket in case the temperature drops in the evening.';
+                }
+
+                const month = new Date().getMonth() + 1;
+                let season = 'Spring';
+                if (month === 12 || month <= 2) {
+                    season = 'Winter';
+                } else if (month >= 3 && month <= 5) {
+                    season = 'Spring';
+                } else if (month >= 6 && month <= 8) {
+                    season = 'Summer';
+                } else {
+                    season = 'Fall';
+                }
+
+                document.getElementById('weatherInfo').innerHTML = `
+                    <h2>Weather and Time in ${city}</h2>
+                    <p><strong>Weather:</strong> ${weather}</p>
+                    <p><strong>Temperature:</strong> ${temperature}°C</p>
+                    <p><strong>Current Time:</strong> ${formattedTime}</p>
+                    <p><strong>Season:</strong> ${season}</p>
+                    <div class="advice">${advice}</div>
+                    <div class="precautions">${precautions}</div>
+                `;
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+                document.getElementById('weatherInfo').innerHTML = "<p>Error fetching weather data. Please try again later.</p>";
+            });
+    </script>
+</body>
+</html>
