@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Interests | Smart Travel Companion</title>
+    <style>
+        /* Page background */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('https://media.istockphoto.com/id/1174854848/vector/aircraft-destinations-with-planes-icons-on-blue-background-abstract-seamless-pattern.jpg?s=612x612&w=0&k=20&c=hcj3Eu8HC2JWbliY5CZChDNpGrLNjvZylU-6JidI3IM=') no-repeat center center fixed;
+            background-size: cover;
+            color: gray;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .form-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 26px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+            color: #333;
+        }
+
+        .option-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="checkbox"], input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+        }
+
+        input[type="submit"] {
+            background-color: #ff7043;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e64a19;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: #ff7043;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .one{
+          text-align: left;
+          margin-bottom: 0px;
+        }
+        .two{
+          text-align: left;
+          margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="form-container">
+      <h2 class="one">Hey Traveller!!</h2>  
+      <h2 class="two">Tell Us About Your Interests</h2>
+
+        <form action="#" method="POST">
+            <!-- Food Preferences -->
+            <div class="option-group">
+                <label for="food">What type of food do you enjoy?</label>
+                <input type="checkbox" name="food" value="local"> Local cuisine
+                <input type="checkbox" name="food" value="international"> International cuisine
+                <input type="checkbox" name="food" value="vegetarian"> Vegetarian options
+                <input type="checkbox" name="food" value="seafood"> Seafood
+            </div>
+
+            <!-- Event Preferences -->
+            <div class="option-group">
+                <label for="events">What types of events interest you?</label>
+                <input type="checkbox" name="events" value="music"> Music festivals
+                <input type="checkbox" name="events" value="cultural"> Cultural events
+                <input type="checkbox" name="events" value="sports"> Sports events
+                <input type="checkbox" name="events" value="workshops"> Workshops
+            </div>
+
+            <!-- Hotel Preferences -->
+            <div class="option-group">
+                <label for="hotels">What type of hotels do you prefer?</label>
+                <input type="radio" name="hotel" value="3-star"> 3-Star
+                <input type="radio" name="hotel" value="4-star"> 4-Star
+                <input type="radio" name="hotel" value="5-star"> 5-Star
+            </div>
+
+            <!-- Cultural Preferences -->
+            <div class="option-group">
+                <label for="culture">What kind of cultural experiences are you looking for?</label>
+                <input type="radio" name="culture" value="calm"> Calm & Relaxing
+                <input type="radio" name="culture" value="party"> Party & Adventure
+                <input type="radio" name="culture" value="natural"> Nature & Exploration
+            </div>
+
+            <div class="button-group">
+                <input type="submit" value="Submit Preferences">
+            </div>
+        </form>
+
+        <div class="footer">
+            <p>Need help? <a href="#">Contact Support</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
