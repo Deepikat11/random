@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Smart Travel Companion</title>
+    <style>
+        /* Full-page background with travel theme */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('https://media.istockphoto.com/id/1174854848/vector/aircraft-destinations-with-planes-icons-on-blue-background-abstract-seamless-pattern.jpg?s=612x612&w=0&k=20&c=hcj3Eu8HC2JWbliY5CZChDNpGrLNjvZylU-6JidI3IM=') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .sign-in-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            width: 320px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f4f4f4;
+        }
+
+        input[type="submit"] {
+            background-color: #ff7043;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e64a19;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            color: #ff7043;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 20px;
+        }
+
+        .social-media img {
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .social-media img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="sign-in-container">
+        <h2>Welcome to Your Travel Journey!</h2>
+        <form action="#" method="POST">
+            <input type="email" name="email" placeholder="Enter your name" required>
+            <input type="email" name="email" placeholder="Enter your eamil Id" required>
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <input type="submit" value="Sign In">
+        </form>
+
+        <div class="footer">
+            <p>Don't have an account? <a href="#">Create a new account</a></p>
+            <p><a href="#">Forgot your password?</a></p>
+        </div>
+
+        <div class="social-media">
+            <img src="https://img.icons8.com/ios/452/google-logo.png" alt="Google">
+            <img src="https://img.icons8.com/ios/452/facebook.png" alt="Facebook">
+            <img src="https://img.icons8.com/ios/452/twitter.png" alt="Twitter">
+        </div>
+    </div>
+
+</body>
+</html>
